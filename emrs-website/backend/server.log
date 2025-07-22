@@ -1,0 +1,4 @@
+nohup: ignoring input
+🚀 Server is running on port 5000
+📊 Health Check: http://localhost:5000/api/health
+🔗 API Base URL: http://localhost:5000/api
