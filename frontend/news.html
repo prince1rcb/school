@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMRS Dornala - News & Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --tribal-pattern: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="%231d3557" opacity="0.1"/><path d="M20,20 Q50,0 80,20 T100,50 T80,80 T50,100 T20,80 T0,50 T20,20 Z" fill="none" stroke="%23a8dadc" stroke-width="2"/></svg>');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            background: linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.9)), 
+                        var(--tribal-pattern),
+                        url('EMRS IMAGES/building.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 15px auto 30px;
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        .tribal-divider {
+            width: 150px;
+            height: 20px;
+            margin: 0 auto 30px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" width="100" height="20"><path d="M0,10 Q25,20 50,10 T100,10" fill="none" stroke="%23e63946" stroke-width="2"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            animation: slideUp 0.8s ease-out;
+            animation-fill-mode: backwards;
+            border: 1px solid rgba(168, 218, 220, 0.2);
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(168, 218, 220, 0.4);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.03);
+        }
+
+        .news-content {
+            padding: 22px;
+        }
+
+        .news-date {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            gap: 6px;
+        }
+
+        .news-date i {
+            font-size: 0.8rem;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .news-excerpt {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            gap: 5px;
+        }
+
+        .read-more i {
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .read-more:hover {
+            color: var(--primary);
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .footer-logo {
+            width: 60px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: var(--light);
+            background: rgba(255,255,255,0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--accent);
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .modal p {
+            margin-bottom: 15px;
+        }
+
+        .modal strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            .news-container {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-card {
+                animation: none;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 30px 0 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .news-date {
+                font-size: 0.8rem;
+            }
+            
+            .news-title {
+                font-size: 1.3rem;
+            }
+            
+            .news-excerpt {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Tribal pattern decoration */
+        .tribal-corner {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .tribal-corner.tl {
+            top: 20px;
+            left: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q50,0 100,50" fill="none" stroke="%23a8dadc" stroke-width="2"/></svg>');
+            background-repeat: no-repeat;
+        }
+
+        .tribal-corner.br {
+            bottom: 20px;
+            right: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q50,100 100,50" fill="none" stroke="%23a8dadc" stroke-width="2"/></svg>');
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="tribal-corner tl"></div>
+    <div class="tribal-corner br"></div>
+
+    <div class="container">
+        <header>
+            <img src="EMRS IMAGES/dept_logo.jpg" alt="EMRS Dornala Logo" class="school-logo">
+            <h1>EMRS Dornala News</h1>
+            <div class="tribal-divider"></div>
+            <p class="subtitle">Celebrating our students' achievements and school activities in the heart of tribal education</p>
+        </header>
+
+        <div class="news-container">
+            <div class="news-card" onclick="openModal('trip-to-sariska')">
+                <img src="EMRS IMAGES/UNITY  DAY.jpg" alt="Educational Trip" class="news-image">
+                <div class="news-content">
+                    <span class="news-date"><i class="fas fa-calendar-alt"></i> 31 Oct, 2024</span>
+                    <h2 class="news-title">EMRS Dornala Students Lead Unity Run to Inspire Togetherness in Tribal Communities</h2>
+                    <p class="news-excerpt">Marking National Unity Day, students of EMRS Dornala took to the streets in a symbolic run across nearby tribal regions.</p>
+                    <a class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="openModal('science-fair')">
+                <img src="EMRS IMAGES/acheivements.jpg" alt="Science Exhibition" class="news-image">
+                <div class="news-content">
+                    <span class="news-date"><i class="fas fa-calendar-alt"></i> 15 October 2023</span>
+                    <h2 class="news-title">EMRS Dornala Students Explore Space Science at ISRO Visit</h2>
+                    <p class="news-excerpt">A group of enthusiastic students from EMRS Dornala recently visited the Indian Space Research Organisation (ISRO), gaining firsthand insight into India’s space missions and satellite technology. </p>
+                    <a class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="openModal('sports-day')">
+                <img src="EMRS IMAGES/chess.jpg" alt="Sports Day" class="news-image">
+                <div class="news-content">
+                    <span class="news-date"><i class="fas fa-calendar-alt"></i> 28 September 2023</span>
+                    <h2 class="news-title">EMRS Dornala Students Master the Game of Minds through Chess</h2>
+                    <p class="news-excerpt">The chess initiative at EMRS Dornala is gaining momentum as students show remarkable enthusiasm and talent in this classic mind game.</p>
+                    <a class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="openModal('cultural-fest')">
+                <img src="EMRS IMAGES/cultural.jpg" alt="Cultural Fest" class="news-image">
+                <div class="news-content">
+                    <span class="news-date"><i class="fas fa-calendar-alt"></i> 12 August 2023</span>
+                    <h2 class="news-title">EMRS Dornala Showcases Tribal Heritage through Vibrant Cultural Dance</h2>
+                    <p class="news-excerpt">Students of EMRS Dornala lit up the stage with their traditional dance performances, representing the beauty and unity of tribal cultures.</p>
+                    <a class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="openModal('language-day')">
+                <img src="EMRS IMAGES/events.jpg" alt="Language Day" class="news-image">
+                <div class="news-content">
+                    <span class="news-date"><i class="fas fa-calendar-alt"></i> 7 sept 2024</span>
+                    <h2 class="news-title">EMRS Dornala Celebrates Ganesh Chaturthi with Devotion and Joy – 7th September 2024</h2>
+                    <p class="news-excerpt">On 7th September 2024, the campus of EMRS Dornala echoed with chants of "Ganpati Bappa Morya!" as students and staff celebrated Ganesh Chaturthi with deep devotion and cultural spirit.</p>
+                    <a class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="openModal('environment-day')">
+                <img src="EMRS IMAGES/Plantation.jpg" alt="Environment Day" class="news-image">
+                <div class="news-content">
+                    <span class="news-date"><i class="fas fa-calendar-alt"></i> 05 June 2024</span>
+                    <h2 class="news-title">Eco-Friendly Campus Initiative</h2>
+                    <p class="news-excerpt">Students launched a tree plantation drive and waste management program on World Environment Day.</p>
+                    <a class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <img src="EMRS IMAGES/dept_logo.jpg" alt="EMRS Logo" class="footer-logo">
+            <p class="footer-text">EMRS Dornala - Empowering Tribal Youth Through Education</p>
+            <p class="footer-text">© 2023 Eklavya Model Residential School, Dornala. All Rights Reserved.</p>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1HY9cx5obW/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://m.youtube.com/@nests-emrs" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals for full news content -->
+    <div class="modal" id="trip-to-sariska-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <img src="EMRS IMAGES/UNITY  DAY.jpg" alt="Educational Trip" class="modal-image">
+            <h2>Unity run  to Tribal Heritage Site</h2>
+            <p><strong>Posted On:</strong> 31 oct 2024 | 08:39 AM</p>
+            <p> In celebration of Rashtriya Ekta Diwas (National Unity Day), the students of EMRS Dornala organized a spirited Unity Run through the heart of the tribal areas, spreading the message of national integration and harmony. With banners, chants, and unwavering energy, the students symbolized the strength of unity in diversity. The event not only fostered community engagement but also highlighted the active role of EMRS in nurturing responsible and patriotic youth among tribal populations.
+
+                "Unity in diversity is our strength — and today, our students carried that message with pride and purpose."
+                — Principal, EMRS Dornala</p>
+            <p>Marking National Unity Day, students of EMRS Dornala took to the streets in a symbolic run across nearby tribal regions. The event aimed to strengthen national pride and solidarity, especially among tribal communities. With energetic slogans and a vibrant display of cultural unity, the students left a powerful impact on local residents, promoting the values of peace, brotherhood, and national integrity.
+
+                The Unity Run reflects our students’ commitment to building a stronger, united India — starting from their own roots.
+                — EMRS Staff Coordinator
+                
+                 </p>
+        </div>
+    </div>
+
+    <div class="modal" id="science-fair-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <img src="EMRS IMAGES/acheivements.jpg" alt="Science Exhibition" class="modal-image">
+            <h2>ISRO Inspires EMRS Dornala Learners Towards a Scientific Future</h2>
+            <p><strong>Posted On:</strong> 15 October 2023 | 10:15 AM</p>
+            <p>A group of enthusiastic students from EMRS Dornala recently visited the Indian Space Research Organisation (ISRO), gaining firsthand insight into India’s space missions and satellite technology. The educational tour sparked curiosity and ambition among the tribal students, many of whom dream of contributing to the nation’s space journey. The interaction with scientists and exposure to real-time space models inspired the next generation of thinkers and innovators.</p>
+            <p>“This visit made me believe that even we, from remote areas, can aim for the stars.”
+                — A student participant</p>
+            <p>Students of EMRS Dornala embarked on an eye-opening educational tour to ISRO, where they learned about satellite launches, space technology, and India’s space achievements. The visit aimed to motivate tribal youth to pursue STEM careers and contribute to the country's scientific development. It was a proud and transformative experience that broadened their vision beyond textbooks.
+
+            </p>
+            <p>“This trip has planted the seeds of scientific curiosity in our students,”
+                — Science Faculty, EMRS Dornala</p>
+        </div>
+    </div>
+
+    <div class="modal" id="sports-day-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <img src="EMRS IMAGES/chess.jpg" alt="Sports Day" class="modal-image">
+            <h2>Checkmate! EMRS Dornala Promotes Mental Discipline through Chess</h2>
+            <p><strong>Posted On:</strong> 28 September 2023 | 06:45 PM</p>
+            <p>Students of EMRS Dornala are actively engaging in the game of chess, sharpening their strategic thinking and problem-solving skills. The school has introduced regular chess sessions as part of co-curricular activities, encouraging students from tribal backgrounds to explore intellectual sports. With growing interest and discipline, students are learning to think ahead, stay calm under pressure, and develop patience and focus.</p>
+            <p>“Chess teaches us to make the right move in life, not just on the board.”
+                — Student Participant</p>
+            <p>The chess initiative at EMRS Dornala is gaining momentum as students show remarkable enthusiasm and talent in this classic mind game. Regular in-house matches and training sessions are helping students boost their memory, logic, and decision-making skills. Teachers report increased concentration and confidence among players, making chess an essential part of student development.</p>
+            <p>“In every match, our students are not just playing — they are growing.”
+                — EMRS Sports Coordinator</p>
+        </div>
+    </div>
+
+    <div class="modal" id="cultural-fest-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <img src="EMRS IMAGES/cultural.jpg" alt="Cultural Fest" class="modal-image">
+            <h2>Tradition Takes the Stage: EMRS Dornala Students Shine in Folk Dance Performances</h2>
+            <p><strong>Posted On:</strong> 12 August 2023 | 11:30 AM</p>
+            <p>In a colorful celebration of tribal traditions, students of EMRS Dornala performed breathtaking cultural dances, showcasing the rich heritage of their communities. Dressed in traditional attire, they brought alive the rhythms and stories passed down through generations. The event highlighted the school’s dedication to preserving indigenous art while nurturing pride in cultural identity.</p>
+            <p>“Through every step and beat, our students expressed the soul of their roots.”
+                — Cultural Incharge, EMRS Dornala
+                
+                </p>
+            <p>Students of EMRS Dornala lit up the stage with their traditional dance performances, representing the beauty and unity of tribal cultures. From tribal drum beats to graceful movements, the performances celebrated diversity and tradition. The event fostered a deep sense of belonging and encouraged students to honor and pass on their ancestral legacy.</p>
+            <p>“This cultural dance was not just a performance — it was a proud echo of our history.”
+                — Student Performer</p>
+        </div>
+    </div>
+
+    <div class="modal" id="language-day-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <img src="EMRS IMAGES/EMRS.jpg" alt="Language Day" class="modal-image">
+            <h2>Spiritual Vibes Fill EMRS Dornala as Students Celebrate Ganesh Chaturthi 2024</h2>
+            <p><strong>Posted On:</strong> 7th sept 2024| 09:00 AM</p>
+            <p>On 7th September 2024, EMRS Dornala celebrated Ganesh Chaturthi with great enthusiasm and spiritual fervor. Students and staff came together to welcome Lord Ganesha, the remover of obstacles, with traditional rituals, devotional songs, and cultural performances. A beautifully crafted idol was installed on campus, and eco-friendly practices were followed throughout the celebration. The event instilled values of unity, faith, and environmental awareness among the students.</p>
+            <p>“Celebrating Ganpati Bappa together brought a divine energy to our campus,”
+                — EMRS Cultural Committee
+                
+                </p>
+            <p>On 7th September 2024, the campus of EMRS Dornala echoed with chants of "Ganpati Bappa Morya!" as students and staff celebrated Ganesh Chaturthi with deep devotion and cultural spirit. The celebration featured a traditional aarti, student-led bhajans, and a cultural dance dedicated to Lord Ganesha. The eco-friendly idol immersion and collective prayer reflected the school’s commitment to values, culture, and sustainability.</p>
+            <p>“The celebration was a perfect blend of tradition, learning, and joy,”
+                — Principal, EMRS Dornala</p>
+        </div>
+    </div>
+
+    <div class="modal" id="environment-day-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <img src="EMRS IMAGES/Plantation.jpg" alt="Environment Day" class="modal-image">
+            <h2>Eco-Friendly Campus Initiative</h2>
+            <p><strong>Posted On:</strong> 05 June 2023 | 08:00 AM</p>
+            <p>EMRS Dornala launched a comprehensive environmental program on World Environment Day, combining modern ecology with traditional tribal conservation practices.</p>
+            <p>Students planted over 200 native saplings around the campus, with tribal elders explaining the traditional uses and significance of each species. The school inaugurated a waste management system incorporating tribal methods of recycling and composting.</p>
+            <p>A special workshop demonstrated how tribal communities traditionally lived in harmony with nature, offering lessons for sustainable living today. Students created an "Eco-Map" of the campus identifying areas for conservation and renewable energy projects.</p>
+            <p>This initiative reflects EMRS's vision of education that connects modern environmental science with indigenous ecological knowledge.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to open modal
+        function openModal(modalId) {
+            document.getElementById(modalId + '-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to close modal
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
+        });
+
+        // Add animation delays to news cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.news-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Add tribal pattern to header background
+            const header = document.querySelector('header');
+            header.style.backgroundImage = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100"><path d="M0,50 Q100,0 200,50 T400,50" fill="none" stroke="%23a8dadc" stroke-width="1" opacity="0.2"/></svg>')`;
+            header.style.backgroundRepeat = 'no-repeat';
+            header.style.backgroundPosition = 'center bottom';
+        });
+    </script>
+</body>
+</html>

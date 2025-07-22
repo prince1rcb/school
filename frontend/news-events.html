@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events | EMRS Dornala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <marquee behavior="scroll" direction="left">
+            <span class="announcement-item">🎉 EMRS Entrance Exam 2024 registration starts from 15th June!</span>
+            <span class="announcement-item">📢 School reopens on 1st July after summer break</span>
+        </marquee>
+    </div>
+
+    <!-- Header/Navbar -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="EMRS IMAGES/dept_logo.jpg" alt="EMRS Dornala Logo" class="logo">
+                <div class="logo-text">
+                    <h1>EMRS(CO-EDU),DORNALA</h1>
+                    <p>AP Tribal Welfare Residentail Educational Institutions Society(R)*</p>
+                </div>
+            </div>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="about.html">Meet Us <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html#about">About Us</a></li>
+                            <li><a href="about.html#management">Management</a></li>
+                            <li><a href="about.html#academics">Academics</a></li>
+                            <li><a href="about.html#affiliation">Affiliation</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="campus-life.html">Campus Life</a></li>
+                    <li><a href="news-events.html" class="active">News & Events</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" style="background-image: url('EMRS IMAGES/building.jpg');">
+        <div class="container">
+            <h1>News & Events</h1>
+            <p>Stay updated with the latest happenings at EMRS Dornala</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>News & Events</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest News</h2>
+                <div class="news-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="academic">Academic</button>
+                    <button class="filter-btn" data-filter="sports">Sports</button>
+                    <button class="filter-btn" data-filter="cultural">Cultural</button>
+                    <button class="filter-btn" data-filter="achievement">Achievements</button>
+                </div>
+            </div>
+            <div class="news-grid">
+                <div class="news-card" data-category="academic">
+                    <div class="news-image">
+                        <img src="EMRS IMAGES/event 1.jpg" alt="News Image">
+                        <span class="news-date">15 May 2024</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Academic</span>
+                        <h3>EMRS Dornala Students Excel in CBSE Class XII Results</h3>
+                        <p>Our school has achieved 100% pass rate in CBSE Class XII examinations with 15 students scoring above 90% marks. Suresh Kumar topped the school with 96.4% marks in Science stream.</p>
+                        <a href="./news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-category="sports">
+                    <div class="news-image">
+                        <img src="EMRS IMAGES/sports.jpg" alt="News Image">
+                        <span class="news-date">10 May 2024</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Sports</span>
+                        <h3>EMRS Dornala Wins District Level Athletics Championship</h3>
+                        <p>Our athletes brought home 8 gold, 5 silver, and 3 bronze medals from the Prakasam District School Games. Special recognition for Ramesh who broke district record in 100m sprint.</p>
+                        <a href="./news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-category="cultural">
+                    <div class="news-image">
+                        <img src="EMRS IMAGES/cultural dance.jpg" alt="News Image">
+                        <span class="news-date">28 Apr 2024</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Cultural</span>
+                        <h3>Annual Cultural Fest 'Tribal Rhythms' Concludes Successfully</h3>
+                        <p>The three-day festival showcased traditional tribal dance, music, and art forms from across India. Over 500 students participated in various competitions and performances.</p>
+                        <a href="./news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-category="achievement">
+                    <div class="news-image">
+                        <img src="EMRS IMAGES/acheivements.jpg" alt="News Image">
+                        <span class="news-date">20 Apr 2024</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Achievement</span>
+                        <h3>Selected students got the chance to represent themselves in ISRO</h3>
+                        <p>Our students developed a low-cost water purification system using traditional tribal knowledge and modern technology. The project has been selected for national-level exhibition.</p>
+                        <a href="./news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-category="academic">
+                    <div class="news-image">
+                        <img src="EMRS IMAGES/computer lab.jpg" alt="News Image">
+                        <span class="news-date">12 Apr 2024</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Academic</span>
+                        <h3>New Computer Lab Inaugurated with Advanced Facilities</h3>
+                        <p>The upgraded lab now features 30 high-speed computers, 3D printing facility, and robotics kits. Funded by Ministry of Tribal Affairs under Digital India initiative.</p>
+                        <a href="./news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-category="cultural">
+                    <div class="news-image">
+                        <img src="EMRS IMAGES/cultural.jpg" alt="News Image">
+                        <span class="news-date">5 Apr 2024</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Cultural</span>
+                        <h3>Traditional Tribal Art Workshop Conducted</h3>
+                        <p>Renowned tribal artist G. Raju conducted a week-long workshop on traditional painting techniques. Students created artworks that will be displayed in school museum.</p>
+                        <a href="./news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="news-cta">
+                <a href="./news.html" class="btn">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Events</h2>
+                <div class="event-tabs">
+                    <button class="event-tab active" data-tab="upcoming">Upcoming</button>
+                    <button class="event-tab" data-tab="ongoing">Ongoing</button>
+                    <button class="event-tab" data-tab="past">Past Events</button>
+                </div>
+            </div>
+            <div class="events-content">
+                <div class="event-tab-content active" id="upcoming">
+                    <div class="event-grid">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">15</span>
+                                <span class="month">Jun</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>EMRS Entrance Exam 2024</h3>
+                                <p class="event-time"><i class="far fa-clock"></i> 10:00 AM - 1:00 PM</p>
+                                <p class="event-location"><i class="fas fa-map-marker-alt"></i> EMRS Dornala Campus</p>
+                                <p class="event-desc">Registration begins for Class VI and IX admissions through national entrance test. Selected students receive free education, accommodation, and meals.</p>
+                                <a href="admissions.html" class="event-link">Registration Details</a>
+                            </div>
+                        </div>
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">21</span>
+                                <span class="month">Jun</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>International Yoga Day Celebration</h3>
+                                <p class="event-time"><i class="far fa-clock"></i> 6:00 AM - 8:00 AM</p>
+                                <p class="event-location"><i class="fas fa-map-marker-alt"></i> School Ground</p>
+                                <p class="event-desc">Mass yoga session with 500+ participants including students, staff, and community members. Special guest yoga instructor from S-VYASA University.</p>
+                                <a href="#" class="event-link">Participate</a>
+                            </div>
+                        </div>
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">05</span>
+                                <span class="month">Jul</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Annual Sports Day</h3>
+                                <p class="event-time"><i class="far fa-clock"></i> 9:00 AM - 4:00 PM</p>
+                                <p class="event-location"><i class="fas fa-map-marker-alt"></i> Sports Complex</p>
+                                <p class="event-desc">Inter-house competitions in athletics, indigenous games, and team sports. Chief Guest: Ms. P. Anusha, Arjuna Awardee in Athletics.</p>
+                                <a href="#" class="event-link">Event Schedule</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-tab-content" id="ongoing">
+                    <div class="event-grid">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">01</span>
+                                <span class="month">Jun</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Environment Month Activities</h3>
+                                <p class="event-time"><i class="far fa-clock"></i> All Month</p>
+                                <p class="event-location"><i class="fas fa-map-marker-alt"></i> Campus & Surroundings</p>
+                                <p class="event-desc">Series of activities including tree plantation, awareness campaigns, and competitions focused on environmental conservation.</p>
+                                <a href="#" class="event-link">Activity Calendar</a>
+                            </div>
+                        </div>
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">10</span>
+                                <span class="month">Jun</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Summer Remedial Classes</h3>
+                                <p class="event-time"><i class="far fa-clock"></i> 9:00 AM - 12:00 PM (Mon-Sat)</p>
+                                <p class="event-location"><i class="fas fa-map-marker-alt"></i> Classrooms</p>
+                                <p class="event-desc">Special classes for students needing additional support in core subjects before the new academic session begins.</p>
+                                <a href="#" class="event-link">Class Schedule</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-tab-content" id="past">
+                    <div class="event-grid">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">15</span>
+                                <span class="month">May</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Career Guidance Workshop</h3>
+                                <p class="event-time"><i class="far fa-clock"></i> Completed</p>
+                                <p class="event-location"><i class="fas fa-map-marker-alt"></i> Auditorium</p>
+                                <p class="event-desc">Experts from various fields guided Class X and XII students about career options and competitive exam preparation strategies.</p>
+                                <a href="#" class="event-link">View Photos</a>
+                            </div>
+                        </div>
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">05</span>
+                                <span class="month">May</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Annual Prize Distribution</h3>
+                                <p class="event-time"><i class="far fa-clock"></i> Completed</p>
+                                <p class="event-location"><i class="fas fa-map-marker-alt"></i> School Ground</p>
+                                <p class="event-desc">Recognized academic excellence, sports achievements, and extracurricular accomplishments of students for 2023-24 session.</p>
+                                <a href="#" class="event-link">Awardees List</a>
+                            </div>
+                        </div>
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">22</span>
+                                <span class="month">Apr</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Earth Day Celebrations</h3>
+                                <p class="event-time"><i class="far fa-clock"></i> Completed</p>
+                                <p class="event-location"><i class="fas fa-map-marker-alt"></i> Campus</p>
+                                <p class="event-desc">Students participated in eco-friendly activities including seed ball making, poster competition, and awareness rally.</p>
+                                <a href="#" class="event-link">View Photos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="events-cta">
+                <a href="#" class="btn">View Full Events Calendar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Photo Gallery</h2>
+                <p>Visual moments from our events and activities</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="EMRS IMAGES/cultural dance.jpg" alt="Event Photo">
+                    <div class="gallery-overlay">
+                        <h3>Annual Day</h3>
+                        <p>Cultural performances by students</p>
+                        <a href="./gallery.html" class="gallery-link"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="EMRS IMAGES/yoga event.jpg" alt="Event Photo">
+                    <div class="gallery-overlay">
+                        <h3>Celeberating YOGA on 21st June 2025</h3>
+                        <p>Stuents doing YOGA with Principal sir and other Teachers</p>
+                        <a href="./gallery.html" class="gallery-link"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="EMRS IMAGES/Plantation.jpg" alt="Event Photo">
+                    <div class="gallery-overlay">
+                        <h3>Earth Day 22 april 2025</h3>
+                        <p>Students doing plantation on Earth Day</p>
+                        <a href="./gallery.html" class="gallery-link"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="EMRS IMAGES/flag hosting.jpg" alt="Event Photo">
+                    <div class="gallery-overlay">
+                        <h3>Republic Day</h3>
+                        <p>Flag hoisting ceremony</p>
+                        <a href="./gallery.html" class="gallery-link"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="EMRS IMAGES/classwork.jpg" alt="Event Photo">
+                    <div class="gallery-overlay">
+                        <h3>Art</h3>
+                        <p>Students creating their thoughts.</p>
+                        <a href="./gallery.html" class="gallery-link"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="EMRS IMAGES/UNITY  DAY.jpg" alt="Event Photo">
+                    <div class="gallery-overlay">
+                        <h3>Community Service</h3>
+                        <p>Village outreach program :- A Run for UNITY DAY by Students in 2024</p>
+                        <a href="./gallery.html" class="gallery-link"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cta">
+                <a href="./gallery.html" class="btn">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Video Gallery</h2>
+                <p>Watch highlights from our events and activities</p>
+            </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="images/video-thumb1.jpg" alt="Video Thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <h3>Annual Cultural Fest 2024</h3>
+                    <p>Highlights from our three-day tribal cultural festival</p>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="images/video-thumb2.jpg" alt="Video Thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <h3>Campus Tour</h3>
+                    <p>Virtual walkthrough of EMRS Dornala facilities</p>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="images/video-thumb3.jpg" alt="Video Thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <h3>Alumni Success Stories</h3>
+                    <p>Our former students share their experiences</p>
+                </div>
+            </div>
+            <div class="video-cta">
+                <a href="#" class="btn">View More Videos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest news, events, and announcements</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="EMRS IMAGES/dept_logo.jpg" alt="EMRS Dornala Logo">
+                        <h3>EMRS Dornala</h3>
+                    </div>
+                    <p>Eklavya Model Residential School, Dornala, Prakasam District, Andhra Pradesh - 523330</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1HY9cx5obW/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://m.youtube.com/@nests-emrs"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="campus-life.html">Campus Life</a></li>
+                        <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Important Links</h3>
+                    <ul>
+                        <li><a href="https://nests.tribal.gov.in/" target="_blank">Ministry of Tribal Affairs</a></li>
+                        <li><a href="https://cbseacademic.nic.in/" target="_blank">CBSE Academic</a></li>
+                        <li><a href="https://www.ncert.nic.in/" target="_blank">NCERT</a></li>
+                        <li><a href="./academic calender.pdf" target="_blank">School Calendar</a></li>
+                        <li><a href="#" target="_blank">Academic Results</a></li>
+                       
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> <a href="tel:+918567123456">08567-123456</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:emrsdornala@gmail.com">emrsdornala@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> EMRS Dornala, Prakasam District, Andhra Pradesh - 523330</li>
+                    </ul>
+                    <div class="footer-map">
+                        <iframe src="https://www.google.com/maps/place/EMRS+DORNALA/@15.8968663,79.0944745,17z/data=!3m1!4b1!4m6!3m5!1s0x3bb54159e35ef989:0xd002dcf5690b3dc7!8m2!3d15.8968663!4d79.0970494!16s%2Fg%2F11my1hdplh?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EMRS Dornala. All Rights Reserved. | Designed by <a href="#" target="_blank">EMRS Web Team</a></p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="https://www.google.com/maps/place/EMRS+DORNALA/@15.8968663,79.0944745,17z/data=!3m1!4b1!4m6!3m5!1s0x3bb54159e35ef989:0xd002dcf5690b3dc7!8m2!3d15.8968663!4d79.0970494!16s%2Fg%2F11my1hdplh?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="news-events.js"></script>
+</body>
+</html>

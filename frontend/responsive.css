@@ -1,0 +1,198 @@
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .about-content, .safety-content, .rules-content, .exam-content, 
+    .fee-content, .visiting-content, .testimonial-card {
+        flex-direction: column;
+    }
+    
+    .about-image, .safety-image, .visiting-image {
+        margin-top: 30px;
+    }
+    
+    .timeline-content {
+        width: 90%;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+        left: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero {
+        height: 70vh;
+    }
+    
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .management-card, .academics-card, .affiliation-card {
+        flex-direction: column;
+    }
+    
+    .management-image, .academics-image, .affiliation-logo {
+        flex: 0 0 auto;
+    }
+    
+    .management-details, .academics-details, .affiliation-details {
+        padding: 30px;
+    }
+    
+    .facility-card {
+        flex-direction: column;
+    }
+    
+    .facility-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .logo-container {
+        margin-bottom: 15px;
+    }
+    
+    .navbar {
+        width: 100%;
+    }
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        margin: 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding: 10px 0 10px 20px;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero {
+        height: 60vh;
+    }
+    
+    .slide-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+    }
+    
+    .quick-links .container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .features-grid, .achievements-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .testimonial-author {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .testimonial-author img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        padding-left: 60px;
+    }
+    
+    .timeline-date {
+        left: 0;
+    }
+    
+    .timeline-content {
+        width: 100%;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+        left: 0;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        height: 50vh;
+    }
+    
+    .slide-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .quick-links .container, .features-grid, .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .testimonial-card {
+        flex-direction: column;
+    }
+    
+    .testimonial-image {
+        height: 200px;
+    }
+    
+    .emergency-card {
+        flex-direction: column;
+    }
+    
+    .emergency-icon {
+        padding: 20px;
+    }
+}

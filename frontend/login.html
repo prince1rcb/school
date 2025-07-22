@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Portal - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/api.js"></script>
+    <style>
+        :root {
+            --primary-color: rgba(74, 111, 165, 0.9);
+            --secondary-color: rgba(22, 96, 136, 0.9);
+            --teacher-color: rgba(106, 76, 147, 0.9);
+            --student-color: rgba(40, 167, 69, 0.9);
+            --accent-color: rgba(79, 195, 247, 0.9);
+            --light-color: rgba(248, 249, 250, 0.9);
+            --dark-color: rgba(52, 58, 64, 0.9);
+            --error-color: rgba(220, 53, 69, 0.9);
+            --glass-effect: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .home-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 2.5rem;
+            background: var(--glass-effect);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            color: white;
+        }
+
+        .login-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo img {
+            height: 70px;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo p {
+            opacity: 0.9;
+            font-size: 1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .user-type-selector {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .user-type-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .user-type-btn.active {
+            background: var(--teacher-color);
+        }
+
+        .user-type-btn:first-child.active {
+            background: var(--teacher-color);
+        }
+
+        .user-type-btn:last-child.active {
+            background: var(--student-color);
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-field {
+            position: relative;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .input-field input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .input-field input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.3);
+            outline: none;
+        }
+
+        .input-field i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+            accent-color: var(--accent-color);
+        }
+
+        .forgot-password a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .forgot-password a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #teacherLoginBtn {
+            background: linear-gradient(135deg, var(--teacher-color), #7b5ab6);
+        }
+
+        #studentLoginBtn {
+            background: linear-gradient(135deg, var(--student-color), #2ecc71);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .divider::before {
+            margin-right: 1.2rem;
+        }
+
+        .divider::after {
+            margin-left: 1.2rem;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-link {
+            text-align: center;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .register-link a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .register-link a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #ffcccc;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 2rem 1.5rem;
+                margin: 0 1.5rem;
+            }
+            
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .user-type-selector {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-container {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .logo img {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 350px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-success {
+            background: rgba(40, 167, 69, 0.9);
+            border-left: 4px solid #28a745;
+        }
+
+        .toast-error {
+            background: rgba(220, 53, 69, 0.9);
+            border-left: 4px solid #dc3545;
+        }
+
+        .toast-warning {
+            background: rgba(255, 193, 7, 0.9);
+            border-left: 4px solid #ffc107;
+            color: #333;
+        }
+
+        .toast-info {
+            background: rgba(23, 162, 184, 0.9);
+            border-left: 4px solid #17a2b8;
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast-content i {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-btn" title="Return to Home">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <div class="login-container">
+        <div class="logo">
+            <img src="https://via.placeholder.com/70x70?text=SCHOOL" alt="School Logo">
+            <h1>School Portal</h1>
+            <p>Select your login type to continue</p>
+        </div>
+
+        <div class="user-type-selector">
+            <div class="user-type-btn active" data-type="teacher">
+                <i class="fas fa-chalkboard-teacher"></i> Teacher
+            </div>
+            <div class="user-type-btn" data-type="student">
+                <i class="fas fa-user-graduate"></i> Student
+            </div>
+        </div>
+
+        <!-- Teacher Login Form -->
+        <form id="teacherLoginForm" class="login-form active">
+            <div class="form-group">
+                <label for="teacherEmail">Teacher Email</label>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="teacherEmail" name="email" placeholder="Enter your school email" required>
+                </div>
+                <div class="error-message" id="teacherEmailError">Please enter a valid school email</div>
+            </div>
+
+            <div class="form-group">
+                <label for="teacherPassword">Password</label>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="teacherPassword" name="password" placeholder="Enter your password" required>
+                    <i class="fas fa-eye-slash toggle-password" style="left: auto; right: 15px; cursor: pointer;"></i>
+                </div>
+                <div class="error-message" id="teacherPasswordError">Password must be at least 8 characters</div>
+            </div>
+
+            <div class="options">
+                <div class="remember-me">
+                    <input type="checkbox" id="teacherRemember" name="remember">
+                    <label for="teacherRemember">Remember me</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="#" id="teacherForgotPassword">Forgot password?</a>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn" id="teacherLoginBtn">Teacher Login</button>
+        </form>
+
+        <!-- Student Login Form -->
+        <form id="studentLoginForm" class="login-form">
+            <div class="form-group">
+                <label for="studentUsername">Student ID</label>
+                <div class="input-field">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" id="studentUsername" name="username" placeholder="Enter your student ID" required>
+                </div>
+                <div class="error-message" id="studentUsernameError">Please enter a valid student ID</div>
+            </div>
+
+            <div class="form-group">
+                <label for="studentPassword">Password</label>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="studentPassword" name="password" placeholder="Enter your password" required>
+                    <i class="fas fa-eye-slash toggle-password" style="left: auto; right: 15px; cursor: pointer;"></i>
+                </div>
+                <div class="error-message" id="studentPasswordError">Password must be at least 6 characters</div>
+            </div>
+
+            <div class="options">
+                <div class="remember-me">
+                    <input type="checkbox" id="studentRemember" name="remember">
+                    <label for="studentRemember">Remember me</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="#" id="studentForgotPassword">Forgot password?</a>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn" id="studentLoginBtn">Student Login</button>
+        </form>
+
+        <div class="divider">or continue with</div>
+
+        <div class="social-login">
+            <div class="social-btn google" title="Login with Google">
+                <i class="fab fa-google"></i>
+            </div>
+            <div class="social-btn microsoft" title="Login with Microsoft">
+                <i class="fab fa-microsoft"></i>
+            </div>
+            <div class="social-btn apple" title="Login with Apple">
+                <i class="fab fa-apple"></i>
+            </div>
+        </div>
+
+        <div class="register-link">
+            Need help? <a href="#">Contact school administration</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // User type selection
+            const userTypeBtns = document.querySelectorAll('.user-type-btn');
+            const loginForms = document.querySelectorAll('.login-form');
+            
+            userTypeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const type = this.getAttribute('data-type');
+                    
+                    // Update active button
+                    userTypeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding form
+                    loginForms.forEach(form => form.classList.remove('active'));
+                    document.getElementById(`${type}LoginForm`).classList.add('active');
+                });
+            });
+
+            // Password visibility toggle for all forms
+            document.querySelectorAll('.toggle-password').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('input');
+                    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                    input.setAttribute('type', type);
+                    this.classList.toggle('fa-eye');
+                    this.classList.toggle('fa-eye-slash');
+                });
+            });
+
+            // Teacher form validation
+            const teacherForm = document.getElementById('teacherLoginForm');
+            const teacherEmail = document.getElementById('teacherEmail');
+            const teacherPassword = document.getElementById('teacherPassword');
+            const teacherEmailError = document.getElementById('teacherEmailError');
+            const teacherPasswordError = document.getElementById('teacherPasswordError');
+
+            teacherForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+
+                // Validate teacher email
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(teacherEmail.value.trim())) {
+                    teacherEmailError.style.display = 'block';
+                    teacherEmail.style.borderColor = '#ffcccc';
+                    teacherEmail.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.3)';
+                    isValid = false;
+                } else {
+                    teacherEmailError.style.display = 'none';
+                    teacherEmail.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    teacherEmail.style.boxShadow = 'none';
+                }
+
+                // Validate teacher password (min 8 chars)
+                if (teacherPassword.value.length < 8) {
+                    teacherPasswordError.style.display = 'block';
+                    teacherPassword.style.borderColor = '#ffcccc';
+                    teacherPassword.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.3)';
+                    isValid = false;
+                } else {
+                    teacherPasswordError.style.display = 'none';
+                    teacherPassword.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    teacherPassword.style.boxShadow = 'none';
+                }
+
+                if (isValid) {
+                    handleTeacherLogin();
+                }
+            });
+
+            // Student form validation
+            const studentForm = document.getElementById('studentLoginForm');
+            const studentUsername = document.getElementById('studentUsername');
+            const studentPassword = document.getElementById('studentPassword');
+            const studentUsernameError = document.getElementById('studentUsernameError');
+            const studentPasswordError = document.getElementById('studentPasswordError');
+
+            studentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+
+                // Validate student ID (alphanumeric, min 6 chars)
+                if (!/^[a-zA-Z0-9]{6,}$/.test(studentUsername.value.trim())) {
+                    studentUsernameError.style.display = 'block';
+                    studentUsername.style.borderColor = '#ffcccc';
+                    studentUsername.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.3)';
+                    isValid = false;
+                } else {
+                    studentUsernameError.style.display = 'none';
+                    studentUsername.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    studentUsername.style.boxShadow = 'none';
+                }
+
+                // Validate student password (min 6 chars)
+                if (studentPassword.value.length < 6) {
+                    studentPasswordError.style.display = 'block';
+                    studentPassword.style.borderColor = '#ffcccc';
+                    studentPassword.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.3)';
+                    isValid = false;
+                } else {
+                    studentPasswordError.style.display = 'none';
+                    studentPassword.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    studentPassword.style.boxShadow = 'none';
+                }
+
+                if (isValid) {
+                    handleStudentLogin();
+                }
+            });
+
+            // Teacher login function
+            async function handleTeacherLogin() {
+                const teacherBtn = document.getElementById('teacherLoginBtn');
+                ApiUtils.showLoading(teacherBtn, 'Authenticating...');
+                
+                try {
+                    const teacherData = {
+                        employeeId: teacherEmail.value.trim(), // Using email field for employee ID
+                        password: teacherPassword.value,
+                        remember: document.getElementById('teacherRemember').checked
+                    };
+                    
+                    const response = await api.loginTeacher(teacherData.employeeId, teacherData.password, teacherData.remember);
+                    
+                    if (response.success) {
+                        ApiUtils.showToast('Teacher login successful! Redirecting to dashboard...', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'teacher-dashboard.html';
+                        }, 1000);
+                    } else {
+                        throw new Error(response.message || 'Login failed');
+                    }
+                } catch (error) {
+                    ApiUtils.handleApiError(error, 'Teacher login failed. Please check your credentials.');
+                    ApiUtils.hideLoading(teacherBtn);
+                }
+            }
+
+            // Student login function
+            async function handleStudentLogin() {
+                const studentBtn = document.getElementById('studentLoginBtn');
+                ApiUtils.showLoading(studentBtn, 'Authenticating...');
+                
+                try {
+                    const studentData = {
+                        studentId: studentUsername.value.trim(),
+                        password: studentPassword.value,
+                        remember: document.getElementById('studentRemember').checked
+                    };
+                    
+                    const response = await api.loginStudent(studentData.studentId, studentData.password, studentData.remember);
+                    
+                    if (response.success) {
+                        ApiUtils.showToast('Student login successful! Redirecting to dashboard...', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'student-dashboard.html';
+                        }, 1000);
+                    } else {
+                        throw new Error(response.message || 'Login failed');
+                    }
+                } catch (error) {
+                    ApiUtils.handleApiError(error, 'Student login failed. Please check your credentials.');
+                    ApiUtils.hideLoading(studentBtn);
+                }
+            }
+
+            // Forgot password handlers
+            document.getElementById('teacherForgotPassword').addEventListener('click', async function(e) {
+                e.preventDefault();
+                const email = teacherEmail.value.trim();
+                if (!email) {
+                    ApiUtils.showToast('Please enter your email address first.', 'warning');
+                    return;
+                }
+                
+                try {
+                    const response = await api.forgotPassword(email);
+                    if (response.success) {
+                        ApiUtils.showToast('Password reset instructions sent to your email.', 'success');
+                    }
+                } catch (error) {
+                    ApiUtils.handleApiError(error, 'Failed to send password reset email.');
+                }
+            });
+
+            document.getElementById('studentForgotPassword').addEventListener('click', async function(e) {
+                e.preventDefault();
+                const studentId = studentUsername.value.trim();
+                if (!studentId) {
+                    ApiUtils.showToast('Please enter your student ID first.', 'warning');
+                    return;
+                }
+                
+                // For students, we'll need to get their email from student ID
+                ApiUtils.showToast('Please contact your teacher or administrator for password reset.', 'info');
+            });
+
+            // Social login handlers
+            document.querySelector('.google').addEventListener('click', function() {
+                const activeForm = document.querySelector('.user-type-btn.active').getAttribute('data-type');
+                window.location.href = `http://localhost:5000/api/auth/google?role=${activeForm}`;
+            });
+
+            document.querySelector('.microsoft').addEventListener('click', function() {
+                const activeForm = document.querySelector('.user-type-btn.active').getAttribute('data-type');
+                ApiUtils.showToast('Microsoft login not implemented yet.', 'info');
+            });
+
+            document.querySelector('.apple').addEventListener('click', function() {
+                const activeForm = document.querySelector('.user-type-btn.active').getAttribute('data-type');
+                ApiUtils.showToast('Apple login not implemented yet.', 'info');
+            });
+        });
+    </script>
+</body>
+</html>
