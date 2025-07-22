@@ -1,0 +1,19 @@
+{
+  "name": "emrs-frontend",
+  "version": "1.0.0",
+  "description": "EMRS Dornala School Website Frontend",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "build": "echo 'Build process for production'",
+    "serve": "live-server --port=3000 --host=0.0.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "bootstrap": "^5.3.0",
+    "jquery": "^3.7.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
